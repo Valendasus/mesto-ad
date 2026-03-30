@@ -14,12 +14,14 @@ const hideInputError = (formElement, inputElement, settings) => {
 
 const checkInputValidity = (formElement, inputElement, settings) => {
 	if (!inputElement.validity.valid) {
-		let errorMessage = inputElement.validationMessage
+		let errorMessage = ''
 		if (
 			inputElement.validity.patternMismatch &&
 			inputElement.dataset.errorMessage
 		) {
 			errorMessage = inputElement.dataset.errorMessage
+		} else {
+			errorMessage = inputElement.validationMessage
 		}
 		showInputError(formElement, inputElement, errorMessage, settings)
 	} else {
